@@ -7,8 +7,9 @@ db = SQLAlchemy()
 
 
 def create_app(debug=False):
-    app = Flask(__name__, instance_relative_config=True)
-    app.config.from_pyfile('config.py')
+    app = Flask(__name__)
+    app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../database.db'
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 
     CORS(app)
     db.init_app(app)
@@ -16,7 +17,7 @@ def create_app(debug=False):
     define_routes(api)
 
     # Starts server.
-    app.run(debug=debug, port=6000)
+    app.run(debug=debug, host='0.0.0.0', port=6000)
 
 
 def define_routes(api):
