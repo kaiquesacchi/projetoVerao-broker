@@ -13,4 +13,4 @@ class ModelAdvertisement(db.Model):
         self.link = link
 
     def __repr__(self):
-        return f'<Advertisement ID: [{id}] from {owner}, link: {link}>'
+        return f'<Advertisement ID: [{self.id}] from {self.owner}, link: {self.link}>'

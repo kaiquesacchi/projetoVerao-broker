@@ -17,13 +17,15 @@ def create_app(debug=False):
     define_routes(api)
 
     # Starts server.
-    app.run(debug=debug, host='0.0.0.0', port=6000)
+    app.run(debug=debug, host='0.0.0.0', port=5001)
 
 
 def define_routes(api):
     from .routes.advertisement import Advertisement
+    from .routes.discount import Discount
     api.add_resource(Advertisement, '/advertisement')
+    api.add_resource(Discount, '/discount')
 
     # Development only
-    from .routes.app_setup import AppSetup 
+    from .routes.app_setup import AppSetup
     api.add_resource(AppSetup, '/appsetup')
